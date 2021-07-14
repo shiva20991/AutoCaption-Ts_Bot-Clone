@@ -20,7 +20,9 @@ I am currently working for a channel if you want to use me, Use my source code a
 
 👉 Add me as a Admin in your channel with edit permission
 
-👉 Add your caption in heroku Config Var
+👉 Add your caption using <code>/set_caption</code> command
+
+<i>( Only Admin )</i>
    
 <i>(Support Markdown)</i>
 
@@ -33,10 +35,10 @@ I am currently working for a channel if you want to use me, Use my source code a
      
       ABOUT_TEXT = """
 
-📕 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞
+📕 --𝐀𝐛𝐨𝐮𝐭-- --𝐌𝐞--
 
 
-○ ᴍʏ ɴᴀᴍᴇ : [Auto Caption bot](https://t.me/joinchat/KFle6Zyi5H0zNzNl)
+○ ᴍʏ ɴᴀᴍᴇ : [Auto Caption | Ts Bots](https://t.me/Anylink_Movies)
 
 ○ ʟᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
 
@@ -44,7 +46,7 @@ I am currently working for a channel if you want to use me, Use my source code a
 
 ○ sᴇʀᴠᴇʀ : ʜᴇʀᴏᴋᴜ 
 
-○ ᴠᴇʀsɪᴏɴ : 1.0.0
+○ ᴠᴇʀsɪᴏɴ : 1.1.0
 
 ○ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ  : [ᴛᴏᴜᴄʜ ᴍᴇ 🤗](https://github.com/Ts-bots/AutoCaption-Ts_Bot-Clone)
 
@@ -100,3 +102,12 @@ __ᴘʟᴇᴀsᴇ ɴᴏᴛᴇ ɪ ᴀᴍ ɴᴏᴛ ᴀ ᴘʀᴏ ᴄᴏᴅᴇʀ ᴀ
 
 """
 
+      NOT_ADMIN_TEXT = """
+
+🔰 <u>𝐒𝐎𝐑𝐑𝐘</u>
+
+Only my admin can see my status, if you want this bot you can take my source code and deploy it. 
+
+<b><a href="https://t.me/Ts_bots">©️ ᴛʀᴀᴄᴋsᴛᴜᴅɪᴏ's ʙᴏᴛs</a></b>
+
+"""

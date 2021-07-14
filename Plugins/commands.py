@@ -7,6 +7,7 @@ import pyrogram
 from pyrogram import filters
 from bot import autocaption
 from config import Config
+from database.database import *
 from translation import Translation
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
  
@@ -43,9 +44,9 @@ help_button=InlineKeyboardMarkup(
                   InlineKeyboardButton("🔐 CLOSE", callback_data = "close_data")
               ]
         ]
-) 
-
-# about button
+)
+ 
+# about button 
 
 about_button=InlineKeyboardMarkup(
         [
@@ -90,7 +91,24 @@ async def about(bot, cmd):
           parse_mode = "markdown",
           disable_web_page_preview = True, 
           reply_markup = about_button
-      )
+      )   
+
+
+@autocaption.on_message(filters.command("set_caption") & filters.private)
+async def set_caption(bot, cmd):
+    if Config.ADMIN_ID != cmd.from_user.id:
+        return
+
+    if len(cmd.command) == 1:
+        await cmd.reply_text(
+            "🖊️ 𝐒𝐄𝐓 𝐂𝐀𝐏𝐓𝐈𝐎𝐍 \n\nUse this command to set your own caption text \n\n👉 `set_caption My Caption`", 
+            quote = True
+        )
+    else:
+        command, caption = cmd.text.split(' ', 1)
+        await update_caption(cmd.from_user.id, caption)
+        await cmd.reply_text(f"**--Your Caption--:**\n\n{caption}", quote=True)
+
 
 
 
@@ -174,18 +192,39 @@ async def button(bot, cmd: CallbackQuery):
                ) 
           )
     elif "status_data" in cb_data:
-          await cmd.message.edit(
-               text=Translation.STATUS_DATA.format(Config.CAPTION_TEXT, Config.CAPTION_POSITION),
-               parse_mode="html", 
-               disable_web_page_preview=True, 
-               reply_markup=InlineKeyboardMarkup(
-                   [
-                       [
-                        InlineKeyboardButton("⬇️ BACK", callback_data="back_data"),
-                        InlineKeyboardButton("🔐 CLOSE", callback_data="close_data")
-                       ]
+          if Config.ADMIN_ID == int(cmd.message.chat.id):
+             try:
+                caption = await get_caption(cmd.from_user.id)
+                caption_text = caption.caption
+             except:
+                caption_text = "Not Added" 
+             await cmd.message.edit(
+                  text=Translation.STATUS_DATA.format(caption_text, Config.CAPTION_POSITION),
+                  parse_mode="html", 
+                  disable_web_page_preview=True, 
+                  reply_markup=InlineKeyboardMarkup(
+                      [
+                          [
+                           InlineKeyboardButton("⬇️ BACK", callback_data="back_data"),
+                           InlineKeyboardButton("🔐 CLOSE", callback_data="close_data")
+                          ]
  
-                   ] 
-               ) 
-          )
-           
+                      ] 
+                  ) 
+             )
+          else:
+             await cmd.message.edit(
+                  text=Translation.NOT_ADMIN_TEXT,
+                  parse_mode="html", 
+                  disable_web_page_preview=True, 
+                  reply_markup=InlineKeyboardMarkup(
+                      [
+                          [
+                           InlineKeyboardButton("⬇️ BACK", callback_data="back_data"),
+                           InlineKeyboardButton("🔐 CLOSE", callback_data="close_data")
+                          ]
+ 
+                      ] 
+                  ) 
+             )
+ 

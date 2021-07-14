@@ -1,15 +1,15 @@
 # AutoCaption-Ts_Bot
 
 
-An open source telegram Auto Caption bot
+An open source of telegram Auto Caption bot
 
 - For demo you can check the <b>[AutoCaption_Ts_Bot](https://telegram.me/AutoCaption_Ts_Bot)</b>
 
 # About Bot
 
-This is a auto caption bot which add the caption prescribed by the admin of bot
+This is a light weight and fastest Auto caption bot which can add caption prescribed by the admin of bot
 
-<i>(Only in channels either public or private Telegram channel)</i> 
+<i>( Works only in private or public Channel )</i> 
 
 ### Commands
 
@@ -17,21 +17,20 @@ This is a auto caption bot which add the caption prescribed by the admin of bot
  /start - A command to start the bot
  /help  - A command to help you how to use the bot
  /about - A command to know about the bot
-
+ /set_caption - A command to set your caption text
 ```
 #### Buttons
 
 ```
+Admin Only
+
 Bot Status - To know the current caption text and position of caption you provided.
 ```
 # Deployment
 
 ## About Heroku Config Vars
+
 ```
-CAPTION_TEXT - Your caption text, if you didn't add caption text bot won't edit the file caption.
-
-(supports markdown)
-
 CAPTION_POSITION - Position of your caption
 
 (Top or bottom or nil) 
